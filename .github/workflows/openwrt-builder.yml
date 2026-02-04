@@ -70,8 +70,7 @@ jobs:
     - name: Install feeds
       run: cd openwrt && ./scripts/feeds install -a
 
-    - name: SSH connection to Actions
-      uses: P3TERX/ssh2actions@main
+
 
     - name: Load custom configuration
       run: |
@@ -80,7 +79,10 @@ jobs:
         chmod +x $DIY_P2_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
-
+        
+    - name: SSH connection to Actions
+      uses: P3TERX/ssh2actions@main
+      
     - name: Download package
       id: package
       run: |
